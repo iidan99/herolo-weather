@@ -17,7 +17,7 @@ export class WeatherServiceService {
 
   getWeatherInfo(key: string): Observable<any> {
     this.weather = [];
-    return this.http.get<WeatherInfo[]>(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=hqqt9CBN6GZG01X5ecACK5CfQXMp4r9B&metric=true`)
+    return this.http.get<WeatherInfo[]>(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=hqqt9CBN6GZG01X5ecACK5CfQXMp4r9B&metric=true`)
     .pipe(map((response) => response['DailyForecasts'].map((test => {
           const weekInfo: WeatherInfo = {
             Date: this.daysName[new Date(test.Date).getDay()],
