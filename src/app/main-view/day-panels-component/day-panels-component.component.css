@@ -1,0 +1,13 @@
+.container{
+    width:80%;
+    height: 50vh;
+    margin: 0 auto;
+    background-color: rgba(252, 252, 252, 0.479);
+    border-radius: 50px;
+}
+
+.weatherinfo{
+    margin: 0 auto;
+    position: relative;
+    top:8vh;
+}

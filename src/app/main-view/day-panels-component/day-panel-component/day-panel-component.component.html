@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row" *ngFor="let weatherinfo of weatherData">
+        <div class="dayweather">
+            <span class="day">{{ weatherinfo.Date }}</span>
+        </div>
+        <div class="imgrow">
+            <img class="imgweather" src=".\assets\sunny.png" alt="">
+        </div>
+        <div class="textweather">
+            <p class="degaree"> {{ weatherinfo.MinTemperatureValue }}{{ weatherinfo.TemperatureType }}  / {{ weatherinfo.MaxTemperatureValue }}{{ weatherinfo.TemperatureType }}</p>
+        </div>
+    </div>
+</div>
