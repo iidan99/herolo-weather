@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgModule } from '@angular/core';
 import { WeatherInfo } from 'src/app/interFace/weatherInfo.InterFace';
 import { WeatherServiceService } from 'src/app/weather-service.service';
 import { Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class DayPanelsComponentComponent implements OnInit {
 
-  constructor(private WeatherService: WeatherServiceService) { }
+  constructor(public WeatherService: WeatherServiceService) { }
   getWeatherData: Subscription;
   weatherData: WeatherInfo[];
     

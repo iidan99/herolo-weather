@@ -1,4 +1,4 @@
-import { EventEmitter,Component, OnInit, Output } from '@angular/core';
+import { EventEmitter,Component, OnInit, NgModule } from '@angular/core';
 import { SearchServiceService } from 'src/app/search-service.service';
 import { Subscription, BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil, debounceTime, switchMap, filter } from 'rxjs/operators';
@@ -16,6 +16,7 @@ export class SearchComponentComponent implements OnInit {
   constructor(private searchService: SearchServiceService, private weatherService: WeatherServiceService) {
   
    }
+  inputText: string;
   weatherInfoData: Subscription;
   weatherInfo: WeatherInfo[];
   locationData: CityInfo[];
