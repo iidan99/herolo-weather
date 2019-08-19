@@ -25,6 +25,7 @@ export class SearchComponentComponent implements OnInit {
   keyVlue: BehaviorSubject<string> = new BehaviorSubject('');
   location: Subscription;
   correntLocation: string;
+  searchvalid: boolean = false;
 
   ngOnInit() {
     this.location = this.searchService.cityLocationInfo.subscribe((result) => {
@@ -58,11 +59,14 @@ export class SearchComponentComponent implements OnInit {
 
   updateSubjectValue(val: string): void {
     this.inputVal.next(val);
+    this.searchvalid = true;
  }
 
  onSelectCity(element) {
    this.keyVlue.next(element.Key); 
    this.correntLocation = `${element.LocalizedName} ${element.Country.LocalizedName}`;
+   this.searchvalid = false;
+   this.inputText = `${element.LocalizedName} ${element.Country.LocalizedName}`;
  }
 
  ngOnDestroy() {

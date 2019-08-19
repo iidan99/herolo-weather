@@ -1,13 +1,14 @@
+
 .container{
   display: flex; 
   justify-content: space-around; 
 }
 
 .row{
-    width: 200px;
-    height: 300px;
+    width: 15vw;
+    height: 22vw;
     background-color: rgba(0, 255, 255, 0.336);
-    border-radius: 20px;
+    border-radius: 8px;
     border: 0.5px solid black;
 }
 .imgrow{
@@ -21,12 +22,12 @@
 }
 
 .degaree{
-    font-size: 30px;
+    font-size: 2vw;
     text-align: center;
 }
 
 .day{
-    font-size: 40px;
+    font-size: 2vw;
 }
 
 .dayweather{

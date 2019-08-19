@@ -1,5 +1,7 @@
 <div class="container">
-  <p>{{ WeatherService.locationInfo }}</p>
+  <div class="location">
+    <p>{{ currentCity }}</p>
+  </div>
   <div class="weatherinfo">
     <app-day-panel-component [weatherData]='weatherData'></app-day-panel-component>
   </div>

@@ -1,13 +1,17 @@
 .container{
     width:80%;
-    height: 50vh;
+    height: 56vh;
     margin: 0 auto;
-    background-color: rgba(252, 252, 252, 0.479);
-    border-radius: 50px;
 }
 
 .weatherinfo{
     margin: 0 auto;
     position: relative;
-    top:8vh;
+}
+
+.location{
+    text-align: center;
+    font-size: 3vw;
+    font-family: fantasy;
+    color: rgb(0, 0, 139);
 }

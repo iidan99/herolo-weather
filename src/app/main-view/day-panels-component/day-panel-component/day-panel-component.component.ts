@@ -10,6 +10,7 @@ export class DayPanelComponentComponent implements OnInit {
 
   constructor() { }
   @Input() weatherData: WeatherInfo[];
+  
   ngOnInit() {
   }
 }

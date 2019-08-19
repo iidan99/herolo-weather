@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <!-- <p class="search_lable">Search</p> -->
-    <input class="search_input" [(ngModel)]="inputText" (ngModelChange)="updateSubjectValue($event)" type="text">    <!-- <button (click)="onSelect()">click me...</button> -->
-    <div class="search_options">
+    <input class="search_input" [(ngModel)]="inputText" placeholder="Search City" (ngModelChange)="updateSubjectValue($event)" type="text">    <!-- <button (click)="onSelect()">click me...</button> -->
+    <div *ngIf="searchvalid" class="search_options">
      <ul class="ul_style">
        <li *ngFor="let loc of locationData; let i = index" (click)="onSelectCity(loc)" class="li_location">{{ locationData[i].LocalizedName }}, {{ locationData[i].Country.LocalizedName }}</li>
      </ul>
