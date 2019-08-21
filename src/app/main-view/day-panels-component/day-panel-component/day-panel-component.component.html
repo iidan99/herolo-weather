@@ -4,9 +4,10 @@
             <span class="day">{{ weatherinfo.Date }}</span>
         </div>
         <div class="imgrow">
-            <img class="imgweather" src=".\assets\sunny.png" alt="">
+            <img class="imgweather" src="assets/{{ weatherinfo.Day.IconPhrase }}.png" alt="">
         </div>
         <div class="textweather">
+            <p class="dayweather">{{ weatherinfo.Day.IconPhrase }}</p>
             <p class="degaree"> {{ weatherinfo.MinTemperatureValue }}{{ weatherinfo.TemperatureType }}  / {{ weatherinfo.MaxTemperatureValue }}{{ weatherinfo.TemperatureType }}</p>
         </div>
     </div>

@@ -4,8 +4,8 @@ html, body { height: 100%; }
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-image: url(http://coxmediagroupohio.com/wp-content/uploads/2018/01/clouds-background-1810-1024x640.jpg);
+    /* background-image: url(http://coxmediagroupohio.com/wp-content/uploads/2018/01/clouds-background-1810-1024x640.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     font-size: 18px;
 }

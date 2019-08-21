@@ -10,7 +10,10 @@ export class DayPanelComponentComponent implements OnInit {
 
   constructor() { }
   @Input() weatherData: WeatherInfo[];
+  daysName: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  today: string;
   
   ngOnInit() {
+    this.today = this.daysName[new Date().getDay()];
   }
 }

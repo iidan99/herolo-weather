@@ -6,13 +6,15 @@
 
 .row{
     width: 15vw;
-    height: 22vw;
     background-color: rgba(0, 255, 255, 0.336);
     border-radius: 8px;
     border: 0.5px solid black;
+    display: flex;
+    flex-direction: column;
 }
 .imgrow{
     width: 100%;
+    flex: 1;
 }
 
 .imgweather{
