@@ -26,7 +26,7 @@ export class SearchServiceService {
           Country: result.Country
         };
         this.location.push(cityInfo);
-        console.log(this.location);
+
         return cityInfo;
       },this.cityLocationInfo.next(this.location))
       ));

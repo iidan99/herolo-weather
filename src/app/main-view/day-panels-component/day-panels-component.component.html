@@ -1,7 +1,7 @@
 <div class="container">
-  <fa-icon [icon]='Heart'></fa-icon>
+  <fa-icon [icon]='Heart' (click)='onAddFavorite()'></fa-icon>
   <div class="location">
-      <p>{{ currentCity }}</p>
+      <p>{{ currentCity.LocalizedName }} {{ currentCity.Country.LocalizedName }}</p>
   </div>
   <div class="weatherinfo">
     <app-day-panel-component [weatherData]='weatherData'></app-day-panel-component>
