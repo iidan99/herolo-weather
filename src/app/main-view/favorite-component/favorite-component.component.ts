@@ -1,4 +1,5 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CityInfo } from 'src/app/interFace/city.InterFace';
 
 @Component({
   selector: 'app-favorite-component',
@@ -8,8 +9,23 @@ import { Component, OnInit, NgModule } from '@angular/core';
 export class FavoriteComponentComponent implements OnInit {
 
   constructor() { }
+  favoriteData: CityInfo[] = [];
+  @Output() favoriteSelected: EventEmitter<CityInfo> = new EventEmitter<CityInfo>();
 
   ngOnInit() {
+
+  }
+
+  favoriteSelect(element){
+    console.log(element);
+    this.favoriteSelected.emit(element);
+  }
+
+  addFavorite(city: CityInfo){
+    if(!this.favoriteData.includes(city)) {
+      this.favoriteData.push(city);
+      console.log(this.favoriteData);
+    }
   }
 
 }

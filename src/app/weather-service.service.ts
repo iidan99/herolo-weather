@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { WeatherInfo } from './interFace/weatherInfo.InterFace';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { CityInfo } from './interFace/city.InterFace';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class WeatherServiceService {
   weather: WeatherInfo[] = [];
   weatherData: BehaviorSubject<WeatherInfo[]> = new BehaviorSubject<WeatherInfo[]>(this.weather);
   daysName: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  locationInfo: string;
+  locationInfo: CityInfo;
   constructor(private http: HttpClient) { }
 
 
@@ -27,8 +28,7 @@ export class WeatherServiceService {
           Day: result.Day
         };
         this.weather.push(weekInfo);
-        console.log(this.weather);
-
+        
         return weekInfo;
       })
         , this.weatherData.next(this.weather))

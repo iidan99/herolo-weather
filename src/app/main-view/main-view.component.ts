@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherInfo } from '../interFace/weatherInfo.InterFace';
+import { CityInfo } from '../interFace/city.InterFace';
+import { FavoriteService } from '../favorite.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main-view',
@@ -8,13 +11,28 @@ import { WeatherInfo } from '../interFace/weatherInfo.InterFace';
 })
 export class MainViewComponent implements OnInit {
   weatherData: WeatherInfo[];
-  constructor() { }
+  citySelectVal: boolean;
+  favorite = false;
+  favoriteSelect: CityInfo;
+  favoriteList: Subscription;
+
+  constructor(private favoriteService: FavoriteService) { }
 
   ngOnInit() {
   }
 
-  getweatherData(element){
+  getWeatherData(element){
     this.weatherData = element;
     console.log(element);
+  }
+  citySelect(value: boolean){
+    this.citySelectVal = value;
+  }
+  switchView(value: boolean){
+    this.favorite = value;
+  }
+  favoriteSelected(element: CityInfo){
+    console.log(element);
+    // this.favoriteService.addFavorite(element);
   }
 }
