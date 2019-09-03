@@ -1,10 +1,11 @@
 import { EventEmitter,Component, OnInit, NgModule, Output, Input } from '@angular/core';
 import { SearchServiceService } from 'src/app/search-service.service';
-import { Subscription, BehaviorSubject, Subject } from 'rxjs';
+import { Subscription, BehaviorSubject, Subject, Observable } from 'rxjs';
 import { takeUntil, debounceTime, switchMap, filter } from 'rxjs/operators';
 import { CityInfo } from 'src/app/interFace/city.InterFace';
 import { WeatherServiceService } from 'src/app/weather-service.service';
 import { WeatherInfo } from 'src/app/interFace/weatherInfo.InterFace';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-component',
@@ -14,7 +15,7 @@ import { WeatherInfo } from 'src/app/interFace/weatherInfo.InterFace';
 export class SearchComponentComponent implements OnInit {
 
   constructor(private searchService: SearchServiceService, private weatherService: WeatherServiceService) {
-  
+
    }
   @Output() dataIsTrue: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   inputVal: BehaviorSubject<string> = new BehaviorSubject('');
@@ -23,25 +24,15 @@ export class SearchComponentComponent implements OnInit {
   location: Subscription;
   inputText: string;
   weatherInfo: WeatherInfo[];
-  locationData: CityInfo[];
+  locationData$: Observable<CityInfo[]> = this.searchService.cityLocationInfo;
   dispose$: Subject<void> = new Subject();
   correntLocation: string;
   locationCity: CityInfo;
   searchvalid = false;
   @Input() getValue: CityInfo;
-
+  searchInput: FormControl;
   ngOnInit() {
-    this.location = this.searchService.cityLocationInfo.subscribe((result) => {
-      this.locationData = result;
-    });
 
-    this.weatherInfoData = this.weatherService.weatherData.subscribe((result) => {
-      if(this.locationCity !== undefined){
-        this.weatherInfo = result;
-        this.weatherService.locationInfo = this.locationCity;
-        this.dataIsTrue.emit(true);
-      }
-    });
     this.inputVal
     .pipe(
       takeUntil(this.dispose$),
@@ -76,7 +67,6 @@ export class SearchComponentComponent implements OnInit {
   this.keyVlue.next(element.Key);
   this.inputText = `${element.LocalizedName} ${element.Country.LocalizedName}`;
   this.searchvalid = false;
-  this.inputText = `${element.LocalizedName} ${element.Country.LocalizedName}`;
  }
 
  ngOnDestroy() {

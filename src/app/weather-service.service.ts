@@ -4,6 +4,7 @@ import { WeatherInfo } from './interFace/weatherInfo.InterFace';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { CityInfo } from './interFace/city.InterFace';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,14 @@ export class WeatherServiceService {
   weatherData: BehaviorSubject<WeatherInfo[]> = new BehaviorSubject<WeatherInfo[]>(this.weather);
   daysName: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   locationInfo: CityInfo;
+  baseURL: string = environment.baseURL;
+  tokenID: string = environment.tokenId
   constructor(private http: HttpClient) { }
 
 
   getWeatherInfo(key: string): Observable<any> {
     this.weather = [];
-    return this.http.get<WeatherInfo[]>(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=hqqt9CBN6GZG01X5ecACK5CfQXMp4r9B&metric=true`)
+    return this.http.get<WeatherInfo[]>(`${this.baseURL}/forecasts/v1/daily/5day/${key}?apikey=${this.tokenID}&metric=true`)
       .pipe(map((response) => response['DailyForecasts'].map((result => {
         const weekInfo: WeatherInfo = {
           Date: this.daysName[new Date(result.Date).getDay()],

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  locationURL: "https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=hqqt9CBN6GZG01X5ecACK5CfQXMp4r9B&q=",
+  tokenId: "hqqt9CBN6GZG01X5ecACK5CfQXMp4r9B&q",
+  baseURL: "https://dataservice.accuweather.com"
 };
 
 /*

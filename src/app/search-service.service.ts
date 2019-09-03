@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { CityInfo } from './interFace/city.InterFace';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -9,26 +9,24 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SearchServiceService {
-
+  // tslint:disable-next-line: variable-name
+  private _cityLocationInfo: BehaviorSubject<CityInfo[]> = new BehaviorSubject<CityInfo[]>([]);
+  public cityLocationInfo: Observable<CityInfo[]> = this._cityLocationInfo.asObservable();
+  url = '/locations/v1/cities/autocomplete?apikey=';
   constructor(public http: HttpClient) { }
 
-  location: CityInfo[] = [];
-  cityLocationInfo: BehaviorSubject<CityInfo[]> = new BehaviorSubject<CityInfo[]>(this.location);
 
 
   getLocation(location: string): Observable<any> {
-    this.location = [];
-    return this.http.get<CityInfo[]>(environment.locationURL + location).pipe(
-      map((response) => response.map(result => {
-        const cityInfo: CityInfo = {
+    return this.http.get<CityInfo[]>(`${environment.baseURL}${this.url}${environment.tokenId}=${location}`).pipe(
+      map((response) => response.map(result => ({
           LocalizedName: result.LocalizedName,
           Key: result.Key,
           Country: result.Country
-        };
-        this.location.push(cityInfo);
-
-        return cityInfo;
-      },this.cityLocationInfo.next(this.location))
-      ));
+        })
+        )
+      ),
+      tap(items => this._cityLocationInfo.next(items))
+      );
     }
 }
