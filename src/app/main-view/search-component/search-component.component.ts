@@ -17,20 +17,18 @@ export class SearchComponentComponent implements OnInit {
   constructor(private searchService: SearchServiceService, private weatherService: WeatherServiceService) {
 
    }
-  @Output() dataIsTrue: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-  inputVal: BehaviorSubject<string> = new BehaviorSubject('');
-  keyVlue: BehaviorSubject<string> = new BehaviorSubject('');
-  weatherInfoData: Subscription;
-  location: Subscription;
-  inputText: string;
-  weatherInfo: WeatherInfo[];
-  locationData$: Observable<CityInfo[]> = this.searchService.cityLocationInfo;
-  dispose$: Subject<void> = new Subject();
-  correntLocation: string;
-  locationCity: CityInfo;
-  searchvalid = false;
-  @Input() getValue: CityInfo;
-  searchInput: FormControl;
+   inputVal: BehaviorSubject<string> = new BehaviorSubject('');
+   weatherInfoData: Subscription;
+   location: Subscription;
+   inputText: string;
+   locationData$: Observable<CityInfo[]> = this.searchService.cityLocationInfo;
+   dispose$: Subject<void> = new Subject();  searchvalid = false;
+   searchInput: FormControl;
+   @Output() dataIsTrue: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+   @Output() keyVal: EventEmitter<string> = new EventEmitter<string>();
+   @Input() getValue: CityInfo;
+
+
   ngOnInit() {
 
     this.inputVal
@@ -41,31 +39,17 @@ export class SearchComponentComponent implements OnInit {
       switchMap(searchTerm => this.searchService.getLocation(searchTerm))
       )
       .subscribe();
-
-    this.keyVlue
-      .pipe(
-        takeUntil(this.dispose$),
-        debounceTime(300),
-        filter(searchTerm => searchTerm.length >= 2),
-        switchMap(Key => this.weatherService.getWeatherInfo(Key))
-        )
-        .subscribe();
-
-    if (this.getValue !== undefined && this.locationCity.Key !== this.getValue.Key) {
-        this.onSelectCity(this.getValue);
-        }
-      }
+     }
 
 
-      updateSubjectValue(val: string): void {
+ updateSubjectValue(val: string): void {
     this.inputVal.next(val);
     this.searchvalid = true;
  }
 
- onSelectCity(element) {
-  this.locationCity = element;
-  this.keyVlue.next(element.Key);
-  this.inputText = `${element.LocalizedName} ${element.Country.LocalizedName}`;
+ onSelectCity(element: CityInfo) {
+   this.keyVal.emit(element.Key);
+  // this.inputText = `${element.LocalizedName} ${element.Country.LocalizedName}`;
   this.searchvalid = false;
  }
 

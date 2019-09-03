@@ -2,7 +2,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherInfo } from '../interFace/weatherInfo.InterFace';
 import { CityInfo } from '../interFace/city.InterFace';
 import { FavoriteService } from '../favorite.service';
-import { Subscription } from 'rxjs';
+import { Subscription, BehaviorSubject, Observable } from 'rxjs';
+import { WeatherServiceService } from '../weather-service.service';
+import { debounceTime, filter, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-view',
@@ -10,20 +12,27 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./main-view.component.css']
 })
 export class MainViewComponent implements OnInit {
-  weatherData: WeatherInfo[];
+  weatherData$: Observable<WeatherInfo[]> = this.weatherService.weatherInfo;
   citySelectVal: boolean;
   favorite = false;
   favoriteSelect: CityInfo;
   favoriteList: Subscription;
+  weatherInfo: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(private favoriteService: FavoriteService) { }
+  constructor(private favoriteService: FavoriteService, private weatherService: WeatherServiceService) { }
 
   ngOnInit() {
+    this.weatherInfo.pipe(
+    debounceTime(300),
+    filter(searchTerm => searchTerm.length >= 2),
+    switchMap(searchTerm => this.weatherService.getWeatherInfo(searchTerm))
+    ).subscribe()
   }
 
-  getWeatherData(element){
-    this.weatherData = element;
-    console.log(element);
+  
+  keySelect(key: string){
+    this.weatherInfo.next(key);
+    this.citySelectVal = true;
   }
   citySelect(value: boolean){
     this.citySelectVal = value;

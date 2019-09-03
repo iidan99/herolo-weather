@@ -9,7 +9,7 @@ import { WeatherInfo } from 'src/app/interFace/weatherInfo.InterFace';
 export class DayPanelComponentComponent implements OnInit {
 
   constructor() { }
-  @Input() weatherData: WeatherInfo[];
+  @Input() weatherData$: WeatherInfo[];
   daysName: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   today: string;
   

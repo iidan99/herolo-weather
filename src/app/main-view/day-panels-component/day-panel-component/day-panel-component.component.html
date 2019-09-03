@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row" *ngFor="let weatherinfo of weatherData">
+    <div class="row" *ngFor="let weatherinfo of weatherData$| async;">
         <div class="dayweather">
             <span class="day">{{ weatherinfo.Date }}</span>
         </div>
