@@ -16,6 +16,7 @@ export class WeatherServiceService {
   locationInfo: CityInfo;
   baseURL: string = environment.baseURL;
   tokenID: string = environment.tokenId
+  today: string = this.daysName[new Date().getDay()];
   private _weatherInfo: BehaviorSubject<WeatherInfo[]> = new BehaviorSubject<WeatherInfo[]>([]);
   public weatherInfo: Observable<WeatherInfo[]> = this._weatherInfo.asObservable();
   constructor(private http: HttpClient) { }
@@ -25,8 +26,7 @@ export class WeatherServiceService {
 
     return this.http.get<WeatherInfo[]>(`${this.baseURL}/forecasts/v1/daily/5day/${key}?apikey=${this.tokenID}&metric=true`)
       .pipe(map((response) => response['DailyForecasts'].map((result => ({
-       
-          Date: this.daysName[new Date(result.Date).getDay()],
+          Date: (this.daysName[new Date(result.Date).getDay()] === this.today ? "Today" : this.daysName[new Date(result.Date).getDay()]),
           TemperatureType: result.Temperature.Maximum.Unit,
           MaxTemperatureValue: result.Temperature.Maximum.Value,
           MinTemperatureValue: result.Temperature.Minimum.Value,

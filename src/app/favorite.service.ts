@@ -1,30 +1,19 @@
 import { Injectable } from '@angular/core';
 import { CityInfo } from './interFace/city.InterFace';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteService {
-  favoriteList: CityInfo[] = [];
-  addToFavorite: Subject<CityInfo> = new Subject<CityInfo>();
-
+  private _favoritList: BehaviorSubject<CityInfo[]> = new BehaviorSubject<CityInfo[]>([]);
+  // public favoritList: Observable<CityInfo[]> = this._favoritList.asObservable();
+  // favoritList: Subject<CityInfo[]> = new Subject<CityInfo[]>();
   constructor() { }
 
-  addFavorite(city: CityInfo): Observable<CityInfo[]> {
-
-    this.favoriteList.map(result => {
-      if(result.Key === city.Key){
-        console.log(true);
-      } else {
-        console.log(false);
-      }
-      });
-    // if (this.favoriteList.includes(city)) {
-    //   this.favoriteList.push(city);
-    // }
-    return;
-  }
+  // addFavorite(city: CityInfo): Observable<any>{
+  //   debugger
+  //   return (this._favoritList.next(this._favoritList.push(city)));
+  // }
 }
-
-

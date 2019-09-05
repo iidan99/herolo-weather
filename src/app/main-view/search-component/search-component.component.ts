@@ -1,10 +1,9 @@
-import { EventEmitter,Component, OnInit, NgModule, Output, Input } from '@angular/core';
+import { EventEmitter,Component, OnInit, Output, Input } from '@angular/core';
 import { SearchServiceService } from 'src/app/search-service.service';
 import { Subscription, BehaviorSubject, Subject, Observable } from 'rxjs';
 import { takeUntil, debounceTime, switchMap, filter } from 'rxjs/operators';
 import { CityInfo } from 'src/app/interFace/city.InterFace';
 import { WeatherServiceService } from 'src/app/weather-service.service';
-import { WeatherInfo } from 'src/app/interFace/weatherInfo.InterFace';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -25,7 +24,7 @@ export class SearchComponentComponent implements OnInit {
    dispose$: Subject<void> = new Subject();  searchvalid = false;
    searchInput: FormControl;
    @Output() dataIsTrue: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-   @Output() keyVal: EventEmitter<string> = new EventEmitter<string>();
+   @Output() keyVal: EventEmitter<CityInfo> = new EventEmitter<CityInfo>();
    @Input() getValue: CityInfo;
 
 
@@ -48,8 +47,7 @@ export class SearchComponentComponent implements OnInit {
  }
 
  onSelectCity(element: CityInfo) {
-   this.keyVal.emit(element.Key);
-  // this.inputText = `${element.LocalizedName} ${element.Country.LocalizedName}`;
+   this.keyVal.emit(element);
   this.searchvalid = false;
  }
 

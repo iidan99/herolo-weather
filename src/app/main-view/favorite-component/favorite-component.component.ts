@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CityInfo } from 'src/app/interFace/city.InterFace';
 
 @Component({
@@ -9,7 +9,7 @@ import { CityInfo } from 'src/app/interFace/city.InterFace';
 export class FavoriteComponentComponent implements OnInit {
 
   constructor() { }
-  favoriteData: CityInfo[] = [];
+  @Input() favoriteData: CityInfo[] = [];
   @Output() favoriteSelected: EventEmitter<CityInfo> = new EventEmitter<CityInfo>();
 
   ngOnInit() {
