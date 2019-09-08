@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngFor="let favor of favoriteData | async;" (click)="favoriteSelect(favor)" class="row">
+  <div *ngFor="let favor of favoriteData" (click)="favoriteSelect(favor)" class="row">
     <p class="text">{{ favor.LocalizedName }}</p>
     <p class="text">{{ favor.Country.LocalizedName }}</p>
     <div class="weatherImg">

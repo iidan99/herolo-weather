@@ -25,7 +25,7 @@ export class SearchComponentComponent implements OnInit {
    searchInput: FormControl;
    @Output() dataIsTrue: EventEmitter<boolean> = new EventEmitter<boolean>(false);
    @Output() keyVal: EventEmitter<CityInfo> = new EventEmitter<CityInfo>();
-   @Input() getValue: CityInfo;
+   @Input() favoriteList: CityInfo[];
 
 
   ngOnInit() {
@@ -42,6 +42,7 @@ export class SearchComponentComponent implements OnInit {
 
 
  updateSubjectValue(val: string): void {
+    this.searchService.favoriteList = this.favoriteList;
     this.inputVal.next(val);
     this.searchvalid = true;
  }

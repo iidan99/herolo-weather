@@ -16,11 +16,11 @@ export class MainViewComponent implements OnInit {
   citySelectVal: boolean;
   favorite = false;
   favoriteSelect: CityInfo;
-  favoriteList: CityInfo[];
+  favoriteList: CityInfo[] = [];
   city: CityInfo;
   weatherInfo: Subject<CityInfo> = new Subject<CityInfo>();
 
-  constructor(private favoriteService: FavoriteService, private weatherService: WeatherServiceService) { }
+  constructor(private weatherService: WeatherServiceService) { }
 
   ngOnInit() {
     this.weatherInfo.pipe(
@@ -43,7 +43,7 @@ export class MainViewComponent implements OnInit {
     this.favorite = value;
   }
   favoriteSelected(element: CityInfo){
-    console.log(element);
+    
   }  
 
   ngOnDestroy(){
@@ -52,6 +52,12 @@ export class MainViewComponent implements OnInit {
   }
 
   addFavorit(element: CityInfo){
-    this.favoriteService.addFavorite(element);
+    if(this.favoriteList.find(city => city.Key === element.Key)){
+     this.favoriteList = this.favoriteList.filter(city => city !== element);
+      console.log(this.favoriteList.find(city => city !== element));
+    }
+    else{
+      this.favoriteList.push(element);
+    }
   }
 }

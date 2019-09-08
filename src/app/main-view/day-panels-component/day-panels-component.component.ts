@@ -3,7 +3,6 @@ import { WeatherInfo } from 'src/app/interFace/weatherInfo.InterFace';
 import { Subscription } from 'rxjs';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { CityInfo } from 'src/app/interFace/city.InterFace';
-import { FavoriteService } from 'src/app/favorite.service';
 
 @Component({
   selector: 'app-day-panels-component',
