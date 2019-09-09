@@ -1,14 +1,14 @@
 <div class="container">
-    <div class="row">
-      <div class="btn_menu">
+    <div class="container__row">
+      <div class="container__row--btn_menu">
   
       </div>
-      <div class="main_header">
-        <h1 class="main_headline">Weather</h1>
+      <div class="container__row--main-header">
+        <h1 class="container__row--main-header-headline">Weather</h1>
       </div>
-      <div class="btn_switch">
-        <button class="home" (click)="onFavorite(false)">Home</button>
-        <button class="favorite" (click)="onFavorite(true)">Favorite</button>
+      <div class="container__row--btn-switch">
+        <button routerLink="/home" routerLinkActive="active" class="container__row--btn-switch-home" (click)="onFavorite(false)">Home</button>
+        <button routerLink="/favorite" routerLinkActive="active" class="container__row--btn-switch-favorite" (click)="onFavorite(true)">Favorite</button>
       </div>
     </div>
   </div>

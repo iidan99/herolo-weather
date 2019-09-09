@@ -1,12 +1,9 @@
 <div class="container">
-  <div class="row">
-    <!-- <p class="search_lable">Search</p> -->
-    <input class="search_input" [(ngModel)]="inputText" placeholder="Search City" (ngModelChange)="updateSubjectValue($event)" type="text">    <!-- <button (click)="onSelect()">click me...</button> -->
-    <div *ngIf="searchvalid" class="search_options">
-     <ul class="ul_style">
-       <li *ngFor="let loc of locationData$ | async; let i = index" (click)="onSelectCity(loc)" class="li_location">{{ loc.LocalizedName }}, {{ loc.Country.LocalizedName }} , {{ loc.Favorite }}</li>
-     </ul>
-    </div>
+  <div class="search">
+    <input class="search__input" [(ngModel)]="inputText" placeholder="Search City" (ngModelChange)="updateSubjectValue($event)" type="text">    <!-- <button (click)="onSelect()">click me...</button> -->  
+     <ul *ngIf="(locationData$ | async).length > 0 && searchValid"  class="search__ul">
+        <li *ngFor="let loc of locationData$ | async; let i = index" (click)="onSelectCity(loc)" class="search__ul-city"><i class="fas fa-search"></i> {{ loc.LocalizedName }}, {{ loc.Country['LocalizedName'] }}</li>
+    </ul>
   </div>
 </div>
 

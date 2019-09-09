@@ -1,0 +1,42 @@
+
+.container{
+  display: flex; 
+  justify-content: space-around; 
+}
+
+.weather{
+    width: 15vw;
+    background-color: rgba(0, 255, 255, 0.336);
+    border-radius: 8px;
+    border: 0.5px solid black;
+    display: flex;
+    flex-direction: column;
+    
+    &__date{
+        margin: 0 auto;
+        padding: 10px;
+        &-day{
+            font-size: 2vw;
+        }
+    }
+
+    &__img-container{
+        width: 100%;
+        flex: 1;
+        &-img{
+            width: 60%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+    &__info{
+        &-icon{
+            text-align: center;
+            margin: 20px auto;
+        }
+        &-degree{
+            font-size: 2vw;
+            text-align: center;
+        }
+    }
+}

@@ -1,14 +1,14 @@
 <div class="container">
-    <div class="row" *ngFor="let weatherinfo of weatherData$| async;">
-        <div class="dayweather">
-            <span class="day">{{ weatherinfo.Date }}</span>
+    <div class="weather" *ngFor="let weatherInfo of weatherData$| async;">
+        <div class="weather__date">
+            <span class="weather__date-day">{{ weatherInfo.Date }}</span>
         </div>
-        <div class="imgrow">
-            <img class="imgweather" src="assets/{{ weatherinfo.Day.IconPhrase }}.png" alt="">
+        <div class="weather__img-container">
+            <img class="weather__img-container-img" src="assets/{{ weatherInfo.DayIcon }}.png" alt="">
         </div>
-        <div class="textweather">
-            <p class="dayweather">{{ weatherinfo.Day.IconPhrase }}</p>
-            <p class="degaree"> {{ weatherinfo.MinTemperatureValue }}° / {{ weatherinfo.MaxTemperatureValue }}°</p>
+        <div class="weather__info">
+            <p class="weather__info-icon">{{ weatherInfo.Day.IconPhrase }}</p>
+            <p class="weather__info-degree">{{ weatherInfo.MaxTemperatureValue }}° / {{ weatherInfo.MinTemperatureValue }}°</p>
         </div>
     </div>
 </div>

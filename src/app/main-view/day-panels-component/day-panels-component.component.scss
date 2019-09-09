@@ -1,0 +1,33 @@
+.container{
+    width:80%;
+    height: 56vh;
+    margin: 0 auto;
+}
+
+.location{
+    text-align: center;
+    font-size: 3vw;
+    font-family: fantasy;
+    color: rgb(0, 0, 139);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &__heart{
+        margin-right: 10px;
+        &--icon{
+            &-awesome{
+                font-size: 35px;
+                color: red;
+            }
+        }
+    }
+    &__info{
+        margin: 0 auto;
+        position: relative;
+    }
+}
+
+
+
+

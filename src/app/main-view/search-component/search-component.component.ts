@@ -1,15 +1,15 @@
-import { EventEmitter,Component, OnInit, Output, Input } from '@angular/core';
-import { SearchServiceService } from 'src/app/search-service.service';
+import { EventEmitter, Component, OnInit, Output, Input } from '@angular/core';
+import { SearchServiceService } from 'src/app/services/search-service.service';
 import { Subscription, BehaviorSubject, Subject, Observable } from 'rxjs';
 import { takeUntil, debounceTime, switchMap, filter } from 'rxjs/operators';
-import { CityInfo } from 'src/app/interFace/city.InterFace';
-import { WeatherServiceService } from 'src/app/weather-service.service';
+import { CityInfo } from 'src/app/Models/city.InterFace';
+import { WeatherServiceService } from 'src/app/services/weather-service.service';
 import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-component',
   templateUrl: './search-component.component.html',
-  styleUrls: ['./search-component.component.css']
+  styleUrls: ['./search-component.component.scss']
 })
 export class SearchComponentComponent implements OnInit {
 
@@ -17,11 +17,10 @@ export class SearchComponentComponent implements OnInit {
 
    }
    inputVal: BehaviorSubject<string> = new BehaviorSubject('');
-   weatherInfoData: Subscription;
-   location: Subscription;
    inputText: string;
    locationData$: Observable<CityInfo[]> = this.searchService.cityLocationInfo;
-   dispose$: Subject<void> = new Subject();  searchvalid = false;
+   dispose$: Subject<void> = new Subject();
+   searchValid = false;
    searchInput: FormControl;
    @Output() dataIsTrue: EventEmitter<boolean> = new EventEmitter<boolean>(false);
    @Output() keyVal: EventEmitter<CityInfo> = new EventEmitter<CityInfo>();
@@ -29,7 +28,6 @@ export class SearchComponentComponent implements OnInit {
 
 
   ngOnInit() {
-
     this.inputVal
     .pipe(
       takeUntil(this.dispose$),
@@ -44,14 +42,15 @@ export class SearchComponentComponent implements OnInit {
  updateSubjectValue(val: string): void {
     this.searchService.favoriteList = this.favoriteList;
     this.inputVal.next(val);
-    this.searchvalid = true;
+    this.searchValid = true;
  }
 
  onSelectCity(element: CityInfo) {
    this.keyVal.emit(element);
-  this.searchvalid = false;
+   this.searchValid = false;
  }
 
+ // tslint:disable-next-line: use-life-cycle-interface
  ngOnDestroy() {
   this.dispose$.next();
   this.dispose$.complete();

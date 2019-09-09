@@ -1,0 +1,24 @@
+.container{
+    display: flex; 
+    &__city{
+        margin: 10px;
+        text-align: center;
+        width: 15vw;
+        background-color: rgba(0, 255, 255, 0.336);
+        border-radius: 8px;
+        border: 0.5px solid black;
+        display: flex;
+        flex-direction: column;
+        &--info{
+            margin: 5px auto;
+            font-size: 2vw;
+        }
+      }
+    &__weatherImg &__weatherImg--Img{
+        margin: 0 auto;
+        display: block;
+        width: 80%;
+    }
+  }
+  
+

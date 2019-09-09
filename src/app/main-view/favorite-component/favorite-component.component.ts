@@ -1,10 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { CityInfo } from 'src/app/interFace/city.InterFace';
+import { CityInfo } from 'src/app/Models/city.InterFace';
 
 @Component({
   selector: 'app-favorite-component',
   templateUrl: './favorite-component.component.html',
-  styleUrls: ['./favorite-component.component.css']
+  styleUrls: ['./favorite-component.component.scss']
 })
 export class FavoriteComponentComponent implements OnInit {
 

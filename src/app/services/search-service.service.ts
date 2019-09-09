@@ -1,7 +1,7 @@
 import { Injectable, Input } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { CityInfo } from './interFace/city.InterFace';
+import { CityInfo } from '../Models/city.InterFace';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -19,13 +19,12 @@ export class SearchServiceService {
 
 
   getLocation(location: string): Observable<any> {
-    debugger
     return this.http.get<CityInfo[]>(`${environment.baseURL}${this.url}${environment.tokenId}=${location}`).pipe(
       map((response) => response.map(result => ({
           LocalizedName: result.LocalizedName,
           Key: result.Key,
           Country: result.Country,
-          Favorite: ((this.favoriteList.find(city => city.Key === result.Key) === undefined)? false : true)
+          Favorite: ((this.favoriteList.find(city => city.Key === result.Key) === undefined) ? false : true)
         })
         )
       ),

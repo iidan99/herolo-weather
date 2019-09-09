@@ -1,9 +1,16 @@
 <div class="container">
-  <fa-icon [icon]='Heart' (click)='onAddFavorite()'></fa-icon>
   <div class="location">
-      <p>{{ currentCity.LocalizedName }} {{ currentCity.Country.LocalizedName }} {{ currentCity.Favorite }}</p>
+    <div class="location__heart" (click)='onAddFavorite()'>
+      <div *ngIf="!currentCity.Favorite" class="location__heart--icon">
+        <i class="far fa-heart location__heart--icon-awesome"></i>
+      </div>
+      <div *ngIf="currentCity.Favorite" class="location__heart--icon">
+        <i class="fas fa-heart location__heart--icon-awesome"></i>
+      </div>
+    </div>
+      <p>{{ currentCity.LocalizedName }} {{ currentCity.Country['LocalizedName'] }}</p>
   </div>
-  <div class="weatherinfo">
+  <div class="location__info">
     <app-day-panel-component [weatherData$]='weatherData$'></app-day-panel-component>
   </div>
 </div>
