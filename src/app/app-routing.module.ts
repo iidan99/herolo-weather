@@ -7,7 +7,7 @@ import { FavoriteComponentComponent } from './main-view/favorite-component/favor
 const appRoutes: Routes = [
   { path: 'home', component: MainViewComponent },
   { path: 'favorite', component: FavoriteComponentComponent },
-  { path: 'herolo-weather',   redirectTo: '/home', pathMatch: 'full' }
+  { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
 
 
