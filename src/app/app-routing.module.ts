@@ -5,10 +5,9 @@ import { MainViewComponent } from './main-view/main-view.component';
 import { FavoriteComponentComponent } from './main-view/favorite-component/favorite-component.component';
 
 const appRoutes: Routes = [
-  { path: '', component: MainViewComponent },
   { path: 'home', component: MainViewComponent },
-  { path: '',   redirectTo: '/home', pathMatch: 'full' },
-  { path: 'favorite', component: FavoriteComponentComponent }
+  { path: 'favorite', component: FavoriteComponentComponent },
+  { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
 
 
