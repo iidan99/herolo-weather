@@ -43,7 +43,8 @@ export class MainViewComponent implements OnInit {
   }
   favoriteSelected(element: CityInfo) {
     this.weatherInfo.next(element);
-    this.citySelectVal = true;
+    this.city = element;
+    this.favorite = false;
   }
 
 

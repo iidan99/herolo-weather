@@ -12,6 +12,6 @@ export class DayPanelComponentComponent implements OnInit {
   @Input() weatherData$: WeatherInfo[];
 
   ngOnInit() {
-    console.log(this.weatherData$);
+
   }
 }
