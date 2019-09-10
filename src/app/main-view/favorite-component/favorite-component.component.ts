@@ -17,7 +17,6 @@ export class FavoriteComponentComponent implements OnInit {
   }
 
   favoriteSelect(element){
-    console.log(element);
     this.favoriteSelected.emit(element);
   }
 

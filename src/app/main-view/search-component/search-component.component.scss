@@ -1,3 +1,7 @@
+.container{
+    position: absolute;
+    width: 100%;
+}
 .search{    
     display: flex;
     justify-content: center;
@@ -14,12 +18,12 @@
         margin: 0 auto;
     }
     &__ul{
+        z-index: 2;
         list-style: none;
         padding: 0;
         background-color: white;
         width: 30%;
         border: 1px solid black;
-        margin: 0 auto;
         
         &-city{
             padding-left: 5px;

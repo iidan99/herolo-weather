@@ -26,7 +26,7 @@ export class MainViewComponent implements OnInit {
       debounceTime(300),
       filter(searchTerm => searchTerm.Key.length >= 2),
       switchMap(searchTerm => this.weatherService.getWeatherInfo(searchTerm.Key))
-    ).subscribe()
+    ).subscribe();
   }
 
 
@@ -42,6 +42,8 @@ export class MainViewComponent implements OnInit {
     this.favorite = value;
   }
   favoriteSelected(element: CityInfo) {
+    this.weatherInfo.next(element);
+    this.citySelectVal = true;
   }
 
 
