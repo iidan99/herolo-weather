@@ -1,14 +1,17 @@
 <div class="container">
     <div class="container__row">
       <div class="container__row--btn_menu">
-  
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
       </div>
       <div class="container__row--main-header">
         <h1 class="container__row--main-header-headline">Weather</h1>
       </div>
       <div class="container__row--btn-switch">
-        <button routerLink="/home" routerLinkActive="active" class="container__row--btn-switch-home" (click)="onFavorite(false)">Home</button>
-        <button routerLink="/favorite" routerLinkActive="active" class="container__row--btn-switch-favorite" (click)="onFavorite(true)">Favorite</button>
+        <button routerLink="/home" routerLinkActive="active"  ngClass="{'active': !switchFavorite }" class="container__row--btn-switch-home" (click)="onFavorite(false)">Home</button>
+        <button routerLink="/favorite" routerLinkActive="active" ngClass="{'active': switchFavorite }" class="container__row--btn-switch-favorite" (click)="onFavorite(true)">Favorite</button>
       </div>
     </div>
   </div>
