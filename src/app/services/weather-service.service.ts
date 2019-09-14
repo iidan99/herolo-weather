@@ -23,7 +23,7 @@ export class WeatherServiceService {
 
 
   getWeatherInfo(key: string): Observable<any> {
-    
+
     return this.http.get<WeatherInfo[]>(`${this.baseURL}/forecasts/v1/daily/5day/${key}?apikey=${this.tokenID}&metric=true`)
       .pipe(map((response) => response['DailyForecasts'].map((result => ({
           Date: (this.daysName[new Date(result.Date).getDay()] === this.today ? 'Today' : this.daysName[new Date(result.Date).getDay()]),

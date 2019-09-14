@@ -15,4 +15,7 @@ export class HeaderComponent implements OnInit {
   onFavorite(value: boolean){
     this.switchFavorite.emit(value);
   }
+  onCheck(check: boolean){
+    // console.log(check);
+  }
 }
