@@ -2,6 +2,9 @@
 .container{
   display: flex; 
   justify-content: space-around; 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    }
 }
 
 .weather{
@@ -17,12 +20,23 @@
         padding: 10px;
         &-day{
             font-size: 2vw;
+            @media (max-width: 768px) {
+             font-size: 16px;
+            }
+        }
+        @media (max-width: 768px) {
+            align-items: center;
+            display: flex;
+            flex: 0.3;
         }
     }
 
     &__img-container{
         width: 100%;
         flex: 1;
+        @media (max-width: 768px) {
+            flex: 0.6;
+        }
         &-img{
             width: 60%;
             margin: 0 auto;
@@ -33,10 +47,35 @@
         &-icon{
             text-align: center;
             margin: 20px auto;
+            @media (max-width: 768px) {
+                font-size: 15px;
+                margin: 0 auto;
+            }
         }
         &-degree{
             font-size: 2vw;
             text-align: center;
+            @media (max-width: 768px) {
+                font-size: 13px;
+                margin: 0 auto;
+            }
+        }
+        @media (max-width: 768px) {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex: 0.5;
+            flex-direction: column;
         }
     }
+    @media (max-width: 768px) {
+        width: 90%;
+        flex-direction: row;
+        display: flex;
+        flex: 0.8;
+        margin: 0 auto;
+    }
 }
+
+// justify-content: center;
+//     display: flex;

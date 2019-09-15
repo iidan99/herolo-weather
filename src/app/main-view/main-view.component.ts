@@ -17,6 +17,7 @@ export class MainViewComponent implements OnInit {
   favoriteSelect: CityInfo;
   favoriteList: CityInfo[] = [];
   city: CityInfo;
+  temperatureVal = true;
   weatherInfo: Subject<CityInfo> = new Subject<CityInfo>();
 
   constructor(private weatherService: WeatherServiceService) { }
@@ -25,10 +26,12 @@ export class MainViewComponent implements OnInit {
     this.weatherInfo.pipe(
       debounceTime(300),
       filter(searchTerm => searchTerm.Key.length >= 2),
-      switchMap(searchTerm => this.weatherService.getWeatherInfo(searchTerm.Key))
+      switchMap(searchTerm => this.weatherService.getWeatherInfo(searchTerm.Key, this.temperatureVal))
     ).subscribe();
   }
-
+  setTemperature(element: boolean){
+    this.temperatureVal = element;
+  }
 
   keySelect(city: CityInfo) {
     this.weatherInfo.next(city);

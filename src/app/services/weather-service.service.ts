@@ -22,14 +22,15 @@ export class WeatherServiceService {
   constructor(private http: HttpClient) { }
 
 
-  getWeatherInfo(key: string): Observable<any> {
+  getWeatherInfo(key: string, temperatureVal: boolean): Observable<any> {
 
-    return this.http.get<WeatherInfo[]>(`${this.baseURL}/forecasts/v1/daily/5day/${key}?apikey=${this.tokenID}&metric=true`)
+    return this.http.get<WeatherInfo[]>(`${this.baseURL}/forecasts/v1/daily/5day/${key}?apikey=${this.tokenID}&metric=${temperatureVal}`)
       .pipe(map((response) => response['DailyForecasts'].map((result => ({
           Date: (this.daysName[new Date(result.Date).getDay()] === this.today ? 'Today' : this.daysName[new Date(result.Date).getDay()]),
           TemperatureType: result.Temperature.Maximum.Unit,
           MaxTemperatureValue: result.Temperature.Maximum.Value,
           MinTemperatureValue: result.Temperature.Minimum.Value,
+          TempUnit: result.Temperature.Minimum.Unit,
           Day: result.Day,
           DayIcon: result.Day.IconPhrase.replace('/', '')
         })

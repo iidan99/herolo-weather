@@ -2,14 +2,14 @@
     <div class="container__row">
       <div class="container__row--btn_menu">
         <div>
-          <span>°C</span>
+          <span class="container__row--btn_menu-val">°F</span>
         </div>
         <label class="switch">
-          <input  type="checkbox">
+          <input  type="checkbox" [formControl]="switch" (click)='onCheck()'>
           <span class="slider round"></span>
         </label>
         <div class="div">
-          <span>°F</span>
+          <span class="container__row--btn_menu-val">°C</span>
         </div>
       </div>
       <div class="container__row--main-header">

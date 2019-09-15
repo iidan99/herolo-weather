@@ -1,10 +1,9 @@
 import { EventEmitter, Component, OnInit, Output, Input } from '@angular/core';
 import { SearchServiceService } from 'src/app/services/search-service.service';
-import { Subscription, BehaviorSubject, Subject, Observable } from 'rxjs';
+import {  BehaviorSubject, Subject, Observable } from 'rxjs';
 import { takeUntil, debounceTime, switchMap, filter } from 'rxjs/operators';
 import { CityInfo } from 'src/app/Models/city.InterFace';
 import { WeatherServiceService } from 'src/app/services/weather-service.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-component',
@@ -21,7 +20,6 @@ export class SearchComponentComponent implements OnInit {
    locationData$: Observable<CityInfo[]> = this.searchService.cityLocationInfo;
    dispose$: Subject<void> = new Subject();
    searchValid = false;
-   searchInput: FormControl;
    @Output() dataIsTrue: EventEmitter<boolean> = new EventEmitter<boolean>(false);
    @Output() keyVal: EventEmitter<CityInfo> = new EventEmitter<CityInfo>();
    @Input() favoriteList: CityInfo[];

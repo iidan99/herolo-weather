@@ -4,5 +4,6 @@ export interface WeatherInfo {
     Day: string;
     MaxTemperatureValue: number;
     MinTemperatureValue: number;
+    TempUnit: string;
     DayIcon: string;
 }
