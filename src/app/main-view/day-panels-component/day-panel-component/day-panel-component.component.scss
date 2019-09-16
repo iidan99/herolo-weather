@@ -26,17 +26,16 @@
         }
         @media (max-width: 768px) {
             align-items: center;
+            justify-content: center;
             display: flex;
-            flex: 0.3;
+            width: 100px;   
+            padding: 0;         
         }
     }
 
     &__img-container{
         width: 100%;
         flex: 1;
-        @media (max-width: 768px) {
-            flex: 0.6;
-        }
         &-img{
             width: 60%;
             margin: 0 auto;
@@ -64,16 +63,17 @@
             align-items: center;
             justify-content: center;
             display: flex;
-            flex: 0.5;
             flex-direction: column;
         }
     }
     @media (max-width: 768px) {
-        width: 90%;
+        width: 100%;
         flex-direction: row;
         display: flex;
         flex: 0.8;
-        margin: 0 auto;
+        margin: 7px auto;
+        padding: 12px;
+        min-height: 55px;
     }
 }
 

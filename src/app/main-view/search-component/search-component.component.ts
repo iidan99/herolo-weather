@@ -46,6 +46,7 @@ export class SearchComponentComponent implements OnInit {
  onSelectCity(element: CityInfo) {
    this.keyVal.emit(element);
    this.searchValid = false;
+   this.inputText = '';
  }
 
  // tslint:disable-next-line: use-life-cycle-interface
