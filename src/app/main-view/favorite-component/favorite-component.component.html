@@ -1,7 +1,9 @@
 <div class="container">
   <div *ngFor="let favor of favoriteData" (click)="favoriteSelect(favor)" routerLink="./home" class="container__city">
-    <p class="container__city--info">{{ favor.LocalizedName }}</p>
-    <p class="container__city--info">{{ favor.Country['LocalizedName'] }}</p>
+    <div class="container__city--info">
+      <p class="container__city--info-text">{{ favor.LocalizedName }}</p>
+      <p class="container__city--info-text">{{ favor.Country['LocalizedName'] }}</p>
+    </div>
     <div class="container__weatherImg">
       <img class="container__weatherImg--Img" src="assets/Sunny.png" alt="">
     </div>

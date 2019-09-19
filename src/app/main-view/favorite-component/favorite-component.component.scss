@@ -1,5 +1,7 @@
 .container{
     display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;
     &__city{
         margin: 10px;
         text-align: center;
@@ -11,14 +13,40 @@
         flex-direction: column;
         cursor: pointer;
         &--info{
-            margin: 5px auto;
             font-size: 2vw;
+            padding: 10px 0;
+            @media (max-width: 768px) {
+              display: flex;
+              align-items: center;
+              padding: 10px 5px;
+              font-size: 23px;
+              flex-wrap: wrap;
+              flex-direction: column-reverse;
+              justify-content: center;
+              width: 115px;
+          }
+            &-text{
+              margin: 0 auto;
+              @media (max-width: 768px) {
+                margin: 0 5px;  
+            }
+          }
         }
+
+        @media (max-width: 768px) {
+          width: 265px;
+          height: 129px;
+          flex-direction: row;
       }
+     }
     &__weatherImg &__weatherImg--Img{
         margin: 0 auto;
         display: block;
         width: 80%;
+        @media (max-width: 768px) {
+        height: 100%;
+        width: auto;
+        }
     }
   }
   
