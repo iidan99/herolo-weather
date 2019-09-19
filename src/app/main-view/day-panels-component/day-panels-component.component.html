@@ -8,7 +8,7 @@
         <i class="fas fa-heart location__heart--icon-awesome"></i>
       </div>
     </div>
-      <p>{{ currentCity.LocalizedName }} {{ currentCity.Country['LocalizedName'] }}</p>
+      <p>{{ currentCity.LocalizedName }} {{ currentCity.Country['ID'] }}</p>
   </div>
   <div class="location__info">
     <app-day-panel-component [weatherData$]='weatherData$'></app-day-panel-component>

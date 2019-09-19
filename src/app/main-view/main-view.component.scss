@@ -2,8 +2,8 @@
     height: 100%;
     &--main{
         height: 100%;
-        background-image: url("../../assets/clouds-background-1810-1024x640.jpg");
-        background-size: cover;
+        background:linear-gradient( rgba(42, 30, 202, 0.5) 100%, rgba(0, 0, 0, 0.5)100%),url("../../assets/background.svg");
         background-repeat: no-repeat;
- }
+        background-size: cover;
+     }
 }

@@ -1,9 +1,5 @@
 .container{
-    width:80%;
     margin: 0 auto;
-    height: 50%;
-    position: absolute;
-    transform: translate(10%, 25%);
 }
 
 .location{
@@ -14,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    padding-top: 70px;
     @media (max-width: 768px) {
         font-size: 30px;
     }
