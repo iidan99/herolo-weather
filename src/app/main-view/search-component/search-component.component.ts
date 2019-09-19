@@ -51,6 +51,7 @@ export class SearchComponentComponent implements OnInit {
 
  // tslint:disable-next-line: use-life-cycle-interface
  ngOnDestroy() {
+  this.inputVal.complete();
   this.dispose$.next();
   this.dispose$.complete();
 }

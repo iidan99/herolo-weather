@@ -21,9 +21,8 @@ export class FavoriteComponentComponent implements OnInit {
   }
 
   addFavorite(city: CityInfo){
-    if(!this.favoriteData.includes(city)) {
+    if (!this.favoriteData.includes(city)) {
       this.favoriteData.push(city);
-      console.log(this.favoriteData);
     }
   }
 

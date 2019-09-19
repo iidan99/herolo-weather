@@ -40,6 +40,10 @@
             width: 60%;
             margin: 0 auto;
             display: block;
+
+            @media (max-width: 768px) {
+                width: 40%;
+            }
         }
     }
     &__info{
@@ -74,6 +78,7 @@
         margin: 7px auto;
         padding: 12px;
         min-height: 55px;
+        max-height: 170px;
     }
 }
 
