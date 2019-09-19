@@ -1,0 +1,9 @@
+.container{
+    height: 100%;
+    &--main{
+        height: 100%;
+        background-image: url("../../assets/clouds-background-1810-1024x640.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+ }
+}

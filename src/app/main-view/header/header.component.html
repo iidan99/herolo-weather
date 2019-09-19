@@ -1,23 +1,27 @@
 <div class="container">
-    <div class="container__row">
-      <div class="container__row--btn_menu">
-        <div>
-          <span class="container__row--btn_menu-val">°F</span>
-        </div>
-        <label class="switch">
-          <input  type="checkbox" [formControl]="switch" (click)='onCheck()'>
-          <span class="slider round"></span>
-        </label>
-        <div class="div">
-          <span class="container__row--btn_menu-val">°C</span>
-        </div>
+  <div class="container__row">
+    <div class="container__row--btn_menu">
+      <div>
+        <span class="container__row--btn_menu-val">°F</span>
       </div>
-      <div class="container__row--main-header">
-        <h1 class="container__row--main-header-headline">Weather</h1>
+      <label class="switch">
+        <input type="checkbox" [formControl]="switch" (click)='onCheck()'>
+        <span class="slider round"></span>
+      </label>
+      <div class="div">
+        <span class="container__row--btn_menu-val">°C</span>
       </div>
-      <div class="container__row--btn-switch">
-        <button routerLink="/home" routerLinkActive="active"  ngClass="{'active': !switchFavorite }" class="container__row--btn-switch-home" (click)="onFavorite(false)">Home</button>
-        <button routerLink="/favorite" routerLinkActive="active" ngClass="{'active': switchFavorite }" class="container__row--btn-switch-favorite" (click)="onFavorite(true)">Favorite</button>
+    </div>
+    <div class="container__row--main-btn-container">
+      <div class="container__row--main-btn-container-header">
+        <h1 class="container__row--main-btn-container-header-headline">Weather</h1>
+      </div>
+      <div class="container__row--main-btn-container-btn-switch">
+        <button routerLink="/home" routerLinkActive="active" ngClass="{'active': !switchFavorite }"
+          class="container__row--main-btn-container-btn-switch-home" (click)="onFavorite(false)">Home</button>
+        <button routerLink="/favorite" routerLinkActive="active" ngClass="{'active': switchFavorite }"
+          class="container__row--main-btn-container-btn-switch-favorite" (click)="onFavorite(true)">Favorite</button>
       </div>
     </div>
   </div>
+</div>

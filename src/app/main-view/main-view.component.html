@@ -1,8 +1,13 @@
 <div class="container">
     <app-header (switchFavorite)="switchView($event)" (temperatureVal)="setTemperature($event)"></app-header>
-    <div *ngIf="!favorite" class="home">
-        <app-search-component (dataIsTrue)="citySelect($event)" (keyVal)="keySelect($event)" [favoriteList]="favoriteList"></app-search-component>
-        <app-day-panels-component *ngIf="citySelectVal" [weatherData$]="weatherData$"  [currentCity]="city" (favorite)="addFavorite($event)"></app-day-panels-component>
+    <div class="container--main">
+        <div *ngIf="!favorite" class="container--home">
+            <app-search-component (dataIsTrue)="citySelect($event)" (keyVal)="keySelect($event)"
+                [favoriteList]="favoriteList"></app-search-component>
+            <app-day-panels-component *ngIf="citySelectVal" [weatherData$]="weatherData$" [currentCity]="city"
+                (favorite)="addFavorite($event)"></app-day-panels-component>
+        </div>
+        <app-favorite-component *ngIf="favorite" (favoriteSelected)="favoriteSelected($event)"
+            [favoriteData]="favoriteList"></app-favorite-component>
     </div>
-    <app-favorite-component *ngIf="favorite" (favoriteSelected)="favoriteSelected($event)" [favoriteData]="favoriteList"></app-favorite-component>
 </div>
