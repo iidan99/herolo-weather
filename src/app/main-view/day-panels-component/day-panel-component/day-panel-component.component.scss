@@ -30,7 +30,8 @@
             display: flex;
             width: 100px;   
             margin: 0 0;
-            flex: 0.3;     
+            flex: 0.3;    
+            min-width: 70px; 
         }
     }
 
@@ -45,9 +46,14 @@
             @media (max-width: 768px) {
                 height: 100%;     
                 width: auto;  
+                position: absolute;
             }
         }
         @media (max-width: 768px) {
+            position: relative;
+            justify-content: center;
+            justify-items: center;
+            display: flex;
             width: 42px;
         }
     }
@@ -55,6 +61,8 @@
         &-icon{
             text-align: center;
             margin: 20px auto;
+            font-size: 21px;
+            color: floralwhite;
             @media (max-width: 768px) {
                 font-size: 15px;
                 margin: 0 auto;
