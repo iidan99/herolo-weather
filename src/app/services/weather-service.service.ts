@@ -32,7 +32,7 @@ export class WeatherServiceService {
           MinTemperatureValue: result.Temperature.Minimum.Value,
           TempUnit: result.Temperature.Minimum.Unit,
           Day: result.Day,
-          DayIcon: result.Day.IconPhrase.replace('/', '')
+          DayIcon: result.Day.Icon
         })
         ))
       ), tap(items => this._weatherInfo.next(items))
