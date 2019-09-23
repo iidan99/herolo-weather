@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  tokenId: "hqqt9CBN6GZG01X5ecACK5CfQXMp4r9B&q",
+  tokenId: "GrJBcGLR9B5W0GpDbfTBIf6Blef2Z81m",
   baseURL: "https://dataservice.accuweather.com"
 
 };
