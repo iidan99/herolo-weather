@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherInfo } from '../Models/weatherInfo.InterFace';
 import { CityInfo } from '../Models/city.InterFace';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { WeatherServiceService } from '../services/weather-service.service';
-import { debounceTime, filter, switchMap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { ProductsState } from '../reducers';
 
 @Component({
   selector: 'app-main-view',
@@ -12,41 +13,24 @@ import { debounceTime, filter, switchMap } from 'rxjs/operators';
 })
 export class MainViewComponent implements OnInit {
   weatherData$: Observable<WeatherInfo[]> = this.weatherService.weatherInfo;
-  citySelectVal: boolean;
   favorite = false;
   favoriteSelect: CityInfo;
   favoriteList: CityInfo[] = [];
   city: CityInfo;
-  temperatureVal = true;
+  temperatureVal: Subscription;
   weatherInfo: Subject<CityInfo> = new Subject<CityInfo>();
 
-  constructor(private weatherService: WeatherServiceService) { }
+  constructor(private weatherService: WeatherServiceService, private store: Store<ProductsState>) { }
 
   ngOnInit() {
-    this.weatherInfo.pipe(
-      debounceTime(300),
-      filter(searchTerm => searchTerm.Key.length >= 2),
-      switchMap(searchTerm => this.weatherService.getWeatherInfo(searchTerm.Key, this.temperatureVal))
-    ).subscribe();
-  }
-  setTemperature(element: boolean){
-    this.temperatureVal = element;
   }
 
-  keySelect(city: CityInfo) {
-    this.weatherInfo.next(city);
-    this.city = city;
-    this.citySelectVal = true;
-  }
-  citySelect(value: boolean) {
-    this.citySelectVal = value;
-  }
   switchView(value: boolean) {
     this.favorite = value;
   }
   favoriteSelected(element: CityInfo) {
     this.weatherInfo.next(element);
-    this.city = element;
+    // this.city = element;
     this.favorite = false;
   }
 
@@ -54,10 +38,10 @@ export class MainViewComponent implements OnInit {
   addFavorite(element: CityInfo) {
     if (this.favoriteList.find(city => city.Key === element.Key)) {
       this.favoriteList = this.favoriteList.filter(city => city !== element);
-      this.city.Favorite = false;
+      // this.city.Favorite = false;
     } else {
       this.favoriteList.push(element);
-      this.city.Favorite = true;
+      // this.city.Favorite = true;
     }
   }
   // tslint:disable-next-line: use-life-cycle-interface

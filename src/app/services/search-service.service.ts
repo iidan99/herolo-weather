@@ -18,8 +18,8 @@ export class SearchServiceService {
 
 
 
-  getLocation(location: string): Observable<any> {
-    return this.http.get<CityInfo[]>(`${environment.baseURL}${this.url}${environment.tokenId}=${location}`).pipe(
+  getLocation(location: string): Observable<CityInfo[]> {
+     return this.http.get<CityInfo[]>(`${environment.baseURL}${this.url}${environment.tokenId}&q=${location}`).pipe(
       map((response) => response.map(result => ({
           LocalizedName: result.LocalizedName,
           Key: result.Key,
