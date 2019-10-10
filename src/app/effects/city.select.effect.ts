@@ -14,7 +14,7 @@ export class CityEffects {
     citySelect$ = createEffect(() =>
         this.actions$.pipe(
             ofType<CitySelect>(CITY_SELECT),
-            mergeMap(({ type, payload }) => this.weatherService.getWeatherInfo(payload.Key, false).pipe(
+            mergeMap(({ type, payload, temp }) => this.weatherService.getWeatherInfo(payload.Key, temp).pipe(
                 map(res => new CitySuccess(res)),
                 catchError((e) => of(new CityFail(e)))
                 ))

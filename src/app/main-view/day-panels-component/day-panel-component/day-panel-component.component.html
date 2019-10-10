@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="weather" *ngFor="let weatherInfo of weatherData$| async;">
+    <div class="weather" *ngFor="let weatherInfo of weatherData">
         <div class="weather__date">
             <span class="weather__date-day">{{ weatherInfo.Date }}</span>
         </div>
@@ -7,7 +7,7 @@
             <img class="weather__img-container-img" src="assets/{{ weatherInfo.DayIcon }}.png" alt="">
         </div>
         <div class="weather__info">
-            <p class="weather__info-icon">{{ weatherInfo.Day.IconPhrase }}</p>
+            <p class="weather__info-icon">{{ weatherInfo.Day['IconPhrase'] }}</p>
             <p class="weather__info-degree">{{ weatherInfo.MaxTemperatureValue }}°{{ weatherInfo.TempUnit }} / {{ weatherInfo.MinTemperatureValue }}°{{ weatherInfo.TempUnit }}</p>
         </div>
     </div>

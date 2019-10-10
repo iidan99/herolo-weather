@@ -1,5 +1,5 @@
 import { Injectable, Input } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { CityInfo } from '../Models/city.InterFace';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +14,8 @@ export class SearchServiceService {
   public cityLocationInfo: Observable<CityInfo[]> = this._cityLocationInfo.asObservable();
   url = '/locations/v1/cities/autocomplete?apikey=';
   favoriteList: CityInfo[] = [];
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {
+  }
 
 
 

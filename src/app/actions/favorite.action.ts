@@ -1,22 +1,26 @@
 import { Action } from '@ngrx/store';
+import { CityInfo } from '../Models/city.InterFace';
 
-export const FAVORITE      = '[FAVORITE] Favorite';
 export const FAVORITE_ADD      = '[FAVORITE] FavoriteAdd';
+export const FAVORITE_REMOVE      = '[FAVORITE] FavoriteRemove';
 export const FAVORITE_FAIL      = '[FAVORITE] FavoriteFail';
 
-export class Favorite implements Action {
-    readonly type = FAVORITE;
 
-    constructor(public payload: boolean) {}
-
-}
 
 export class FavoriteAdd implements Action {
     readonly type = FAVORITE_ADD;
 
-    constructor(public payload: boolean) {}
+    constructor(public payload: CityInfo) {}
 
 }
+
+export class FavoriteRemove implements Action {
+    readonly type = FAVORITE_REMOVE;
+
+    constructor(public payload: CityInfo) {}
+
+}
+
 
 export class FavoriteFail implements Action {
     readonly type = FAVORITE_FAIL;
@@ -25,4 +29,4 @@ export class FavoriteFail implements Action {
 
 }
 
-export type Actions = Favorite | FavoriteAdd | FavoriteFail;
+export type Actions =  FavoriteAdd | FavoriteFail | FavoriteRemove;

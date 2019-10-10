@@ -8,7 +8,7 @@ export const CITY_FAIL       = '[SELECTION] CityFail';
 export class CitySelect implements Action {
     readonly type = CITY_SELECT;
 
-    constructor(public payload: CityInfo) {}
+    constructor(public payload: CityInfo, public temp: boolean) {}
 
 }
 
