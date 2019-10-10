@@ -21,7 +21,7 @@ export class WeatherServiceService {
   temperature: boolean;
   private _weatherInfo: BehaviorSubject<WeatherInfo[]> = new BehaviorSubject<WeatherInfo[]>([]);
   public weatherInfo: Observable<WeatherInfo[]> = this._weatherInfo.asObservable();
-
+  
   constructor(private http: HttpClient,  private store: Store<ProductsState>) {
 
    }

@@ -13,7 +13,7 @@ export const initialState: SelectState = {
 };
 
 export function reducer(state: SelectState = initialState, action: city.Actions ) {
-  switch(action.type) {
+  switch (action.type) {
     case city.CITY_SELECT:
       return {
         ...state,
@@ -23,7 +23,7 @@ export function reducer(state: SelectState = initialState, action: city.Actions 
       return {
         ...state,
         weatherInfo: action.payload
-      }
+      };
       case city.CITY_FAIL:
     default:
       return state;
