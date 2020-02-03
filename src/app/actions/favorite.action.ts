@@ -29,4 +29,4 @@ export class FavoriteFail implements Action {
 
 }
 
-export type Actions =  FavoriteAdd | FavoriteFail | FavoriteRemove;
+export type favoriteActions =  FavoriteAdd | FavoriteFail | FavoriteRemove;

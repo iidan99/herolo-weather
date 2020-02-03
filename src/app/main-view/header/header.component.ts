@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Temperature } from '../../actions/index';
-import { ProductsState } from 'src/app/reducers';
+import { AppState } from 'src/app/app.state';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 @Output() switchFavorite: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 @Output() temperatureVal: EventEmitter<boolean> = new EventEmitter<boolean>(false);
 
-  constructor(private store: Store<ProductsState>) { }
+  constructor(private store: Store<AppState>) { }
   switch = new FormControl(true);
   ngOnInit() {
   }

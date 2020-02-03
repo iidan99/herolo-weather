@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { Store } from '@ngrx/store';
-import { ProductsState } from '../reducers';
+import { AppState } from '../app.state';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +22,7 @@ export class WeatherServiceService {
   private _weatherInfo: BehaviorSubject<WeatherInfo[]> = new BehaviorSubject<WeatherInfo[]>([]);
   public weatherInfo: Observable<WeatherInfo[]> = this._weatherInfo.asObservable();
   
-  constructor(private http: HttpClient,  private store: Store<ProductsState>) {
+  constructor(private http: HttpClient,  private store: Store<AppState>) {
 
    }
 

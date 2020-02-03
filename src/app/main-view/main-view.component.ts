@@ -4,7 +4,7 @@ import { CityInfo } from '../Models/city.InterFace';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { WeatherServiceService } from '../services/weather-service.service';
 import { Store } from '@ngrx/store';
-import { ProductsState } from '../reducers';
+import { AppState } from '../app.state';
 
 @Component({
   selector: 'app-main-view',
@@ -21,7 +21,7 @@ export class MainViewComponent implements OnInit {
   temperatureVal: Subscription;
   weatherInfo: Subject<CityInfo> = new Subject<CityInfo>();
 
-  constructor(private weatherService: WeatherServiceService, private store: Store<ProductsState>) { }
+  constructor(private weatherService: WeatherServiceService, private store: Store<AppState>) { }
 
   ngOnInit() {
     this.city = this.store.select('citySelect', 'selectCity').subscribe(res =>

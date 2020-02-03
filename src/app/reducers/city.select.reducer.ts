@@ -12,7 +12,7 @@ export const initialState: SelectState = {
   weatherInfo: null
 };
 
-export function reducer(state: SelectState = initialState, action: city.Actions ) {
+export function cityReducer(state: SelectState = initialState, action: city.cityActions ) {
   switch (action.type) {
     case city.CITY_SELECT:
       return {

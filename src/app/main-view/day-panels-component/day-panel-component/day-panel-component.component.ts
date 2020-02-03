@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WeatherInfo } from 'src/app/Models/weatherInfo.InterFace';
 import { Store } from '@ngrx/store';
-import { ProductsState } from 'src/app/reducers';
 import { Subscription } from 'rxjs';
+import { AppState } from 'src/app/app.state';
 
 @Component({
   selector: 'app-day-panel-component',
@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class DayPanelComponentComponent implements OnInit {
 
-  constructor(private store: Store<ProductsState>) { }
+  constructor(private store: Store<AppState>) { }
   weatherData: WeatherInfo[];
   getWeatherInfo: Subscription;
 

@@ -1,8 +1,7 @@
 <div class="container--main">
     <app-header (switchFavorite)="switchView($event)"></app-header>
     <div *ngIf="!favorite" class="container--main-home">
-        <app-search-component
-            [favoriteList]="favoriteList"></app-search-component>
+        <app-search-component></app-search-component>
         <app-day-panels-component *ngIf="citySelect !== null"
             (favorite)="addFavorite($event)"></app-day-panels-component>
     </div>

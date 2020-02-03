@@ -5,11 +5,11 @@ export interface FavoriteSelector {
  favorites: CityInfo[];
 }
 
-export const initialState: FavoriteSelector = {
+const initialState: FavoriteSelector = {
     favorites: []
 };
 
-export function reducer(state: FavoriteSelector = initialState, action: favoriteAction.Actions){
+export function favoriteReducer(state: FavoriteSelector = initialState, action: favoriteAction.favoriteActions){
     switch (action.type) {
         case favoriteAction.FAVORITE_ADD:
             return {

@@ -10,4 +10,4 @@ export class Temperature implements Action {
 
 }
 
-export type Actions = Temperature;
+export type tempActions = Temperature;

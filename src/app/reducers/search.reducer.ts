@@ -6,11 +6,11 @@ export interface SearchState {
   cities: CityInfo[];
 }
 
-export const initialState: SearchState = {
+const initialState: SearchState = {
   cities: []
 };
 
-export function reducer(state: SearchState = initialState, action: LocationAction.Actions ) {
+export function searchReducer(state: SearchState = initialState, action: LocationAction.searchActions ) {
   switch(action.type) {
     case LocationAction.SEARCH_SUCCESS:
       return {

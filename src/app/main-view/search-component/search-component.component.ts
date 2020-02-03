@@ -5,7 +5,7 @@ import { takeUntil, debounceTime, filter, tap } from 'rxjs/operators';
 import { CityInfo } from 'src/app/Models/city.InterFace';
 import { Search, CitySelect } from '../../actions/index';
 import { Store } from '@ngrx/store';
-import { ProductsState } from './../../reducers/index';
+import { AppState } from 'src/app/app.state';
 
 
 
@@ -20,15 +20,12 @@ export class SearchComponentComponent implements OnInit {
   locationData$: Observable<CityInfo[]> = this.store.select('search', 'cities');
   dispose$: Subject<void> = new Subject();
   searchValid = false;
-  @Output() dataIsTrue: EventEmitter<boolean> = new EventEmitter<boolean>(false);
-  @Output() keyVal: EventEmitter<CityInfo> = new EventEmitter<CityInfo>();
-  @Input() favoriteList: CityInfo[];
   city: CityInfo;
   weatherInfo: Subject<CityInfo> = new Subject<CityInfo>();
   temp: Subscription;
   tempVal: boolean;
-  
-  constructor(private searchService: SearchServiceService, private store: Store<ProductsState>) {
+
+  constructor(private searchService: SearchServiceService, private store: Store<AppState>) {
     this.store.select('citySelect', 'selectCity').subscribe(result => {
       this.city = result;
     }
@@ -36,7 +33,7 @@ export class SearchComponentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.temp = this.store.select('val', 'temperature').subscribe(res => this.tempVal = res);
+    this.temp = this.store.select('val').subscribe(res => this.tempVal = res);
 
     this.inputVal
       .pipe(
@@ -54,20 +51,16 @@ export class SearchComponentComponent implements OnInit {
   }
 
   updateSubjectValue(val: string): void {
-    this.searchService.favoriteList = this.favoriteList;
     this.inputVal.next(val);
     this.searchValid = true;
   }
 
   onSelectCity(element: CityInfo) {
-    console.log(this.temp);
-    // this.store.dispatch(new CitySelect(element));
     this.weatherInfo.next(element);
     this.searchValid = false;
     this.inputText = '';
   }
 
-  // tslint:disable-next-line: use-life-cycle-interface
   ngOnDestroy() {
     this.inputVal.complete();
     this.dispose$.next();

@@ -26,4 +26,4 @@ export class SearchFail implements Action {
 
 }
 
-export type Actions = Search | SearchSuccess | SearchFail;
+export type searchActions = Search | SearchSuccess | SearchFail;

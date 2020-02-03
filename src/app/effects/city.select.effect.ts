@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { WeatherServiceService } from '../services/weather-service.service';
 import { CitySelect, CitySuccess, CityFail, CITY_SELECT } from '../actions/index';
-import { ProductsState } from '../reducers';
+import { AppState } from '../app.state';
 
 
 @Injectable()
@@ -23,7 +23,7 @@ export class CityEffects {
     constructor(
         private actions$: Actions,
         private weatherService: WeatherServiceService,
-        private store: Store<ProductsState>
+        private store: Store<AppState>
     ) { }
 
 }

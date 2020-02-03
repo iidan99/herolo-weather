@@ -26,4 +26,4 @@ export class CityFail implements Action {
 
 }
 
-export type Actions = CitySelect | CitySuccess | CityFail;
+export type cityActions = CitySelect | CitySuccess | CityFail;

@@ -3,8 +3,8 @@ import { WeatherInfo } from 'src/app/Models/weatherInfo.InterFace';
 import { Subscription } from 'rxjs';
 import { CityInfo } from 'src/app/Models/city.InterFace';
 import { Store } from '@ngrx/store';
-import { ProductsState } from 'src/app/reducers';
 import { FavoriteAdd, FavoriteRemove } from 'src/app/actions';
+import { AppState } from 'src/app/app.state';
 
 @Component({
   selector: 'app-day-panels-component',
@@ -13,7 +13,7 @@ import { FavoriteAdd, FavoriteRemove } from 'src/app/actions';
 })
 export class DayPanelsComponentComponent implements OnInit {
   // Heart = faHeart;
-  constructor(private store: Store<ProductsState>) { }
+  constructor(private store: Store<AppState>) { }
 
   weatherSub: Subscription;
   weatherData: WeatherInfo[];
